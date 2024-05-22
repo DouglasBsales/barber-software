@@ -5,18 +5,24 @@ import Link from "next/link";
 import { useContext } from "react";
 import { HomeContext } from "@/Context/HomeContext";
 
-import {faClipboardList,faGear,faHouse,faListCheck,faPlus,} from "@fortawesome/free-solid-svg-icons";
+import {
+  faClipboardList,
+  faGear,
+  faHouse,
+  faListCheck,
+  faPlus,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalService from "./Home/ModalService";
 
 const Menu = () => {
-  const { page, setPage, modalService, setModalService } =
+  const { page, setPage, modalService, setModalService, initialDay } =
     useContext(HomeContext);
 
   return (
-    <div className="w-full h-[64px] flex justify-center items-center bg-white fixed bottom-0 z-10">
-      <div className="w-[333px] flex justify-between items-center z-0">
+    <div className="w-full h-[64px] flex justify-center items-center bg-white fixed bottom-0 ">
+      <div className="w-[333px] flex justify-between items-center">
         <Link
           href="/Home"
           className="flex flex-col items-center"
@@ -63,7 +69,7 @@ const Menu = () => {
             >
               <div
                 className={`w-[80px] h-[80px] justify-center items-center bg-whiteOpacity rounded-full ${
-                  page === "Home" ? "flex" : "hidden" 
+                  page === "Home" ? "flex" : "hidden"
                 }`}
               ></div>
             </div>
@@ -74,6 +80,7 @@ const Menu = () => {
                   : "opacity-0 pointer-events-none"
               }`}
               onClick={() => setModalService(true)}
+              disabled={initialDay}
             >
               <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
             </button>
