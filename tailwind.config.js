@@ -14,7 +14,7 @@ module.exports = {
       },
       colors: {
         bluePrimary: "#064FC5",
-        whiteOpacity: "#F5F5F7",
+        whiteOpacity: "#F5F5F5",
         blackPrimary: "#3C3C3C",
         blackOpacity: "#B8B8B8",
         greenPrimary: "#46E068",
