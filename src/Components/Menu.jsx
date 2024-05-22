@@ -1,16 +1,13 @@
 "use client";
 
+import Link from "next/link";
+
 import { useContext } from "react";
 import { HomeContext } from "@/Context/HomeContext";
-import {
-  faClipboardList,
-  faGear,
-  faHouse,
-  faListCheck,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+
+import {faClipboardList,faGear,faHouse,faListCheck,faPlus,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
+
 import ModalService from "./Home/ModalService";
 
 const Menu = () => {
@@ -19,7 +16,7 @@ const Menu = () => {
 
   return (
     <div className="w-full h-[64px] flex justify-center items-center bg-white fixed bottom-0 z-10">
-      <div className="w-[333px] flex justify-between items-center z-0 ">
+      <div className="w-[333px] flex justify-between items-center z-0">
         <Link
           href="/Home"
           className="flex flex-col items-center"
@@ -40,7 +37,7 @@ const Menu = () => {
 
         <Link
           href="#"
-          className="flex flex-col items-center relative"
+          className="flex flex-col items-center"
           onClick={() => setPage("RelatorioDia")}
         >
           <FontAwesomeIcon
@@ -59,22 +56,28 @@ const Menu = () => {
         </Link>
 
         <div className="relative flex justify-center items-center">
-          {page === "Home" && (
-            <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center">
+            <div
+              className="absolute top-[-72px] w-[80px] h-[80px] flex justify-center items-center"
+              style={{ clipPath: "inset(40px 0 0 0)" }}
+            >
               <div
-                className="absolute top-[-72px] w-[80px] h-[80px] flex justify-center items-center"
-                style={{ clipPath: "inset(40px 0 0 0)" }}
-              >
-                <div className="w-[80px] h-[80px] flex justify-center items-center bg-whiteOpacity rounded-full"></div>
-              </div>
-              <button
-                className="w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px]"
-                onClick={() => setModalService(true)}
-              >
-                <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
-              </button>
+                className={`w-[80px] h-[80px] justify-center items-center bg-whiteOpacity rounded-full ${
+                  page === "Home" ? "flex" : "hidden" 
+                }`}
+              ></div>
             </div>
-          )}
+            <button
+              className={`w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px] transition-opacity duration-300 ${
+                page === "Home"
+                  ? "opacity-100"
+                  : "opacity-0 pointer-events-none"
+              }`}
+              onClick={() => setModalService(true)}
+            >
+              <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
+            </button>
+          </div>
         </div>
 
         <Link
