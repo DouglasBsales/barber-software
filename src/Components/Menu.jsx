@@ -11,9 +11,11 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import ModalService from "./Home/ModalService";
 
 const Menu = () => {
-  const { page, setPage } = useContext(HomeContext);
+  const { page, setPage, modalService, setModalService } =
+    useContext(HomeContext);
 
   return (
     <div className="w-full h-[64px] flex justify-center items-center bg-white fixed bottom-0 z-10">
@@ -61,12 +63,16 @@ const Menu = () => {
             <div className="flex flex-col items-center">
               <div
                 className="absolute top-[-72px] w-[80px] h-[80px] flex justify-center items-center"
-                style={{ clipPath: 'inset(40px 0 0 0)' }}>
+                style={{ clipPath: "inset(40px 0 0 0)" }}
+              >
                 <div className="w-[80px] h-[80px] flex justify-center items-center bg-whiteOpacity rounded-full"></div>
               </div>
-               <button className="w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px]">
-                  <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
-                </button>
+              <button
+                className="w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px]"
+                onClick={() => setModalService(true)}
+              >
+                <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
+              </button>
             </div>
           )}
         </div>
@@ -111,6 +117,7 @@ const Menu = () => {
           )}
         </Link>
       </div>
+      {modalService && <ModalService />}
     </div>
   );
 };
