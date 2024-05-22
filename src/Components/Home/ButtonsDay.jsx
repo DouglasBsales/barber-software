@@ -9,6 +9,11 @@ const ButtonsDay = () => {
     setInitialDay(false)
   }
 
+  const finishDay = ()=> {
+    alert("Dia finalizado!")
+    setInitialDay(true)
+  }
+
   return (
     <div className="w-full flex justify-center pt-5 pb-6">
       <div>
@@ -16,7 +21,7 @@ const ButtonsDay = () => {
           <button className="bg-greenPrimary rounded-md" onClick={initDay}>
             <p className="py-3 px-16 text-white font-bold">Iniciar o dia</p>
           </button>
-        ):  <button className="bg-redPrimary rounded-md" onClick={()=> setInitialDay(true)}>
+        ):  <button className="bg-redPrimary rounded-md" onClick={finishDay}>
         <p className="py-3 px-16 text-white font-bold">Finalizar o dia</p>
       </button>}
        
