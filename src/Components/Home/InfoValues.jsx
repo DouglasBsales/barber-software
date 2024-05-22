@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 
 const InfoValues = () => {
-  const { seeValue, setSeeValue } = useContext(HomeContext);
+  const { seeValue, setSeeValue, arrayValueTotal, arrayValueDay } =
+    useContext(HomeContext);
 
   return (
     <div className="w-[326px] bg-white rounded-lg mt-[40px] px-5 border">
@@ -37,7 +38,9 @@ const InfoValues = () => {
           <div className="w-full">
             <input
               type={`${seeValue ? "text" : "password"}`}
-              value={"R$ 335,00"}
+              value={`R$ ${arrayValueTotal
+                .reduce((total, itens) => total + itens, 0)
+                .toFixed(2).replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
             />
           </div>
@@ -46,7 +49,13 @@ const InfoValues = () => {
       <div className="pt-3">
         <div>
           <p className="text-blackOpacity font-bold">Valor atual do dia</p>
-          <p className="text-bluePrimary font-bold pl-[10px]">R$ 135,00</p>
+          <input
+            type="text"
+            value={`R$ ${arrayValueDay
+              .reduce((total, itens) => total + itens, 0)
+              .toFixed(2).replace(".", ",")}`}
+              className="font-bold text-bluePrimary"
+          />
         </div>
         <div className="pt-3 pb-5">
           <button className="bg-bluePrimary rounded-md">
