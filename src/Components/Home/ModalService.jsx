@@ -24,11 +24,12 @@ const ModalService = () => {
       name: value,
       service: valueService,
       typePayment: valuePayment,
-      payment: 0,
+      valuePayment: 25,
     };
 
     setArrayRelatorioDia([...arrayRelatorioDia, service]);
-
+    alert("Serviço adicionado!");
+    setModalService(false);
   };
 
   return (
