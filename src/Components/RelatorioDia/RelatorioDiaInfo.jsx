@@ -47,7 +47,7 @@ const RelatorioDiaInfo = () => {
                 <div className="flex gap-2 pb-4">
                   <p className="font-bold text-bluePrimary">Valor</p>
                   <p className="text-blackPrimary">
-                    R$ {service.payment.toFixed(2).replace(".", ",")}
+                    R$ {service.valuePayment.toFixed(2).replace(".", ",")}
                   </p>
                 </div>
               </div>
