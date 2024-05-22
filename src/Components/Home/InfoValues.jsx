@@ -1,4 +1,4 @@
-import { HomeContext } from "@/Context/Home/HomeContext";
+import { HomeContext } from "@/Context/HomeContext";
 import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
