@@ -7,7 +7,7 @@ const InfoValues = () => {
   const { seeValue, setSeeValue } = useContext(HomeContext);
 
   return (
-    <div className="w-[326px] bg-white rounded-lg mt-[73px] px-5 border">
+    <div className="w-[326px] bg-white rounded-lg mt-[40px] px-5 border">
       <div className=" flex pt-5 pb-4 gap-4">
         <div className="">
           <FontAwesomeIcon
