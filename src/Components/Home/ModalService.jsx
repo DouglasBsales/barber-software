@@ -12,12 +12,12 @@ const ModalService = () => {
             <p className="text-blackOpacity font-semibold">Nome</p>
             <input
               type="text"
-              className="w-full outline-none border-b border-blackPrimary"
+              className="w-full outline-none border-b border-blackPrimary rounded-none bg-transparent pt-"
             />
           </div>
           <div>
             <p className="text-blackOpacity font-semibold">Serviço: </p>
-            <select className="outline-none">
+            <select className="outline-none bg-transparent">
               <option value="0">Selecione um serviço</option>
               <option value="Corte">Corte</option>
               <option value="Corte + barba">Corte + barba</option>
@@ -28,8 +28,8 @@ const ModalService = () => {
             <p className="text-blackOpacity font-semibold">
               Forma de pagamento:{" "}
             </p>
-            <select className="outline-none">
-              <option value="0">Selecione um serviço</option>
+            <select className="outline-none bg-transparent">
+              <option value="0">Selecione um pagamento</option>
               <option value="Dinheiro">Dinheiro</option>
               <option value="Pix">Pix</option>
               <option value="Cartão">Cartão</option>
