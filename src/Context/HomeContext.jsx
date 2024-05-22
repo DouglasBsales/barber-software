@@ -13,6 +13,8 @@ export default function HomeContextProvider({ children }) {
   const [arrayValueTotal, setArrayValueTotal] = useState([]);
   const [arrayValueDay, setAarrayValueDay] = useState([]);
 
+  const [arrayRelatorioDia, setArrayRelatorioDia] = useState([])
+
   return (
     <HomeContext.Provider
       value={{
@@ -26,6 +28,8 @@ export default function HomeContextProvider({ children }) {
         setModalService,
         arrayValueTotal,
         arrayValueDay,
+        arrayRelatorioDia,
+        setArrayRelatorioDia
       }}
     >
       {children}
