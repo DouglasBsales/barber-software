@@ -42,7 +42,7 @@ const Menu = () => {
         </Link>
 
         <Link
-          href="#"
+          href="/RelatorioDia"
           className="flex flex-col items-center"
           onClick={() => setPage("RelatorioDia")}
         >
