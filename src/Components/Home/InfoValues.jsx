@@ -1,10 +1,11 @@
 import { HomeContext } from "@/Context/HomeContext";
 import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useContext } from "react";
 
 const InfoValues = () => {
-  const { seeValue, setSeeValue, arrayValueTotal, arrayValueDay } =
+  const { seeValue, setSeeValue, arrayValueTotal, arrayRelatorioDia, setPage } =
     useContext(HomeContext);
 
   return (
@@ -40,7 +41,8 @@ const InfoValues = () => {
               type={`${seeValue ? "text" : "password"}`}
               value={`R$ ${arrayValueTotal
                 .reduce((total, itens) => total + itens, 0)
-                .toFixed(2).replace(".", ",")}`}
+                .toFixed(2)
+                .replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
             />
           </div>
@@ -51,16 +53,17 @@ const InfoValues = () => {
           <p className="text-blackOpacity font-bold">Valor atual do dia</p>
           <input
             type="text"
-            value={`R$ ${arrayValueDay
-              .reduce((total, itens) => total + itens, 0)
-              .toFixed(2).replace(".", ",")}`}
-              className="font-bold text-bluePrimary"
+            value={`R$ ${arrayRelatorioDia
+              .reduce((total, service) => total + service.valuePayment, 0)
+              .toFixed(2)
+              .replace(".", ",")}`}
+            className="font-bold text-bluePrimary"
           />
         </div>
         <div className="pt-3 pb-5">
-          <button className="bg-bluePrimary rounded-md">
-            <p className="text-white font-bold py-1 px-5">Ver detalhes</p>
-          </button>
+          <Link href="/RelatorioDia" className="flex justify-center bg-bluePrimary rounded-md" onClick={()=> setPage("RelatorioDia")}>
+            <p className="text-white font-bold py-1">Ver detalhes</p>
+          </Link>
         </div>
       </div>
     </div>

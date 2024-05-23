@@ -6,12 +6,10 @@ import InfoValues from "@/Components/Home/InfoValues";
 
 export default function Home() {
   return (
-    <div className="w-full min-h-screen flex justify-center bg-whiteOpacity overflow-x-hidden">
-      <div className="max-w-6xl flex flex-col items-center px-8 pt-9">
-        <Header />
-        <InfoValues />
-        <ButtonsDay />
-      </div>
+    <div className="max-w-6xl flex flex-col items-center px-8 pt-9">
+      <Header />
+      <InfoValues />
+      <ButtonsDay />
     </div>
   );
 }

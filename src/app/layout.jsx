@@ -18,7 +18,9 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <body className={montSerrat.className}>
         <HomeContextProvider>
-          {children}
+          <div className="w-full min-h-screen flex justify-center bg-whiteOpacity overflow-x-hidden">
+            {children}
+          </div>
           <Menu />
         </HomeContextProvider>
       </body>
