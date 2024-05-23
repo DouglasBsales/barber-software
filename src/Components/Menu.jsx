@@ -68,19 +68,13 @@ const Menu = () => {
               style={{ clipPath: "inset(40px 0 0 0)" }}
             >
               <div
-                className={`w-[80px] h-[80px] justify-center items-center bg-whiteOpacity rounded-full ${
-                  page === "Home" ? "flex" : "hidden"
-                }`}
+                className={`w-[80px] h-[80px] justify-center items-center bg-whiteOpacity rounded-full`}
               ></div>
             </div>
             <button
-              className={`w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px] transition-opacity duration-300 ${
-                page === "Home"
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
-              }`}
+              className={`w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px]`}
               onClick={() => setModalService(true)}
-              disabled={initialDay}
+              disabled={initialDay || page !== "Home"}
             >
               <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
             </button>
