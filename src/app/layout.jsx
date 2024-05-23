@@ -1,6 +1,9 @@
-import { Montserrat } from "next/font/google";
 import "./globals.css";
+import { Montserrat } from "next/font/google";
+
 import HomeContextProvider from "@/Context/HomeContext";
+import ConfigContextProvider from "@/Context/ConfigContext";
+
 import Menu from "@/Components/Menu";
 
 const montSerrat = Montserrat({
@@ -18,10 +21,12 @@ export default function RootLayout({ children }) {
     <html lang="pt-br">
       <body className={montSerrat.className}>
         <HomeContextProvider>
+          <ConfigContextProvider>
           <div className="w-full min-h-screen flex justify-center bg-whiteOpacity overflow-x-hidden">
             {children}
           </div>
           <Menu />
+          </ConfigContextProvider>
         </HomeContextProvider>
       </body>
     </html>
