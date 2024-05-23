@@ -7,7 +7,7 @@ const RelatorioDiaInfo = () => {
   const { arrayRelatorioDia } = useContext(HomeContext);
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center pb-[100px]">
       <p className="text-blackOpacity font-bold text-2xl">
         Serviços realizados
       </p>
