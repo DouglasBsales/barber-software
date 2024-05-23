@@ -33,19 +33,19 @@ const RelatorioDiaInfo = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <p className="font-bold text-bluePrimary">Nome</p>
+                  <p className="font-bold text-bluePrimary">Nome:</p>
                   <p className="text-blackPrimary">{service.name}</p>
                 </div>
                 <div className="flex gap-2">
-                  <p className="font-bold text-bluePrimary">Serviço</p>
+                  <p className="font-bold text-bluePrimary">Serviço:</p>
                   <p className="text-blackPrimary">{service.service}</p>
                 </div>
                 <div className="flex gap-2">
-                  <p className="font-bold text-bluePrimary">Serviço</p>
+                  <p className="font-bold text-bluePrimary">Forma de Pagamento:</p>
                   <p className="text-blackPrimary">{service.typePayment}</p>
                 </div>
                 <div className="flex gap-2 pb-4">
-                  <p className="font-bold text-bluePrimary">Valor</p>
+                  <p className="font-bold text-bluePrimary">Valor:</p>
                   <p className="text-blackPrimary">
                     R$ {service.valuePayment.toFixed(2).replace(".", ",")}
                   </p>
