@@ -20,7 +20,7 @@ const ModalService = () => {
     const service = {
       id: nanoid(),
       hour: new Date().toLocaleTimeString("pt-BR"),
-      date: new Date().toLocaleDateString(),
+      date: new Date().toLocaleDateString("pt-BR"),
       name: value,
       service: valueService,
       typePayment: valuePayment,
