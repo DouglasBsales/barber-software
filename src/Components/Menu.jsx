@@ -74,7 +74,7 @@ const Menu = () => {
             <button
               className={`w-[61px] h-[61px] flex justify-center items-center bg-bluePrimary rounded-full absolute top-[-62px]`}
               onClick={() => setModalService(true)}
-              disabled={initialDay || page !== "Home"}
+              disabled={initialDay === true || page !== "Home"}
             >
               <FontAwesomeIcon icon={faPlus} className="text-white text-xl" />
             </button>
@@ -102,7 +102,7 @@ const Menu = () => {
         </Link>
 
         <Link
-          href="#"
+          href="/Configuracoes"
           className="flex flex-col items-center"
           onClick={() => setPage("Configuracoes")}
         >
