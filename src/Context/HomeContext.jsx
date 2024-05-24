@@ -6,13 +6,44 @@ export const HomeContext = createContext();
 
 export default function HomeContextProvider({ children }) {
   const [seeValue, setSeeValue] = useState(true);
-  const [initialDay, setInitialDay] = useState(true);
+
+  const initialDayValue = () => {
+
+    let initialDay = null
+
+    if(typeof window !== "undefined"){
+      initialDay = localStorage.getItem("initialDay");
+    }
+
+    if (initialDay) {
+      return JSON.parse(initialDay);
+    } else {
+      return [];
+    }
+  };
+
+  const [initialDay, setInitialDay] = useState(initialDayValue());
   const [page, setPage] = useState("Home");
   const [modalService, setModalService] = useState(false);
 
   const [arrayValueTotal, setArrayValueTotal] = useState([]);
 
-  const [arrayRelatorioDia, setArrayRelatorioDia] = useState([])
+
+  const relatorioDia = () => {
+
+    let day = null
+
+    if(typeof window !== "undefined"){
+      day = localStorage.getItem("Servicos_dia");
+    }
+
+    if (day) {
+      return JSON.parse(day);
+    } else {
+      return [];
+    }
+  };
+  const [arrayRelatorioDia, setArrayRelatorioDia] = useState(relatorioDia())
 
   return (
     <HomeContext.Provider
