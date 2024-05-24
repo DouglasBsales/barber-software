@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const InfoValues = () => {
-  const { seeValue, setSeeValue, arrayValueTotal, arrayRelatorioDia, setPage } =
+  const { seeValue, setSeeValue, arrayRelatorioCompleto, arrayRelatorioDia, setPage } =
     useContext(HomeContext);
 
   return (
@@ -39,8 +39,8 @@ const InfoValues = () => {
           <div className="w-full">
             <input
               type={`${seeValue ? "text" : "password"}`}
-              value={`R$ ${arrayValueTotal
-                .reduce((total, itens) => total + itens, 0)
+              value={`R$ ${arrayRelatorioCompleto
+                .reduce((total, service) => total + service.valuePayment, 0)
                 .toFixed(2)
                 .replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
