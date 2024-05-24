@@ -68,6 +68,10 @@ const RelatorioDiaInfo = () => {
             </div>
           </div>
         ))}
+        <div className="flex gap-2 pt-5">
+          <p className="font-bold text-blackPrimary">Valor total: </p>
+          <p className="font-semibold text-bluePrimary">R$ {arrayRelatorioDia.reduce((total, service) => total + service.valuePayment, 0).toFixed(2).replace(".", ",")}</p>
+        </div>
       </div>
     </div>
   );
