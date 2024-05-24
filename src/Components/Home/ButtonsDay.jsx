@@ -37,7 +37,8 @@ const ButtonsDay = () => {
     setInitialDay(true);
 
     localStorage.setItem("initialDay", JSON.stringify(true));
-    setArrayRelatorioCompleto(arrayRelatorioDia);
+    
+    setArrayRelatorioCompleto([arrayRelatorioDia]);
 
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
