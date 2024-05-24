@@ -40,7 +40,7 @@ const InfoValues = () => {
             <input
               type={`${seeValue ? "text" : "password"}`}
               value={`R$ ${arrayRelatorioCompleto
-                .reduce((total, service) => total + service.valuePayment, 0)
+                .reduce((total, service) => total + service.reduce((subTotal, service)=> subTotal + service.valuePayment, 0), 0)
                 .toFixed(2)
                 .replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
