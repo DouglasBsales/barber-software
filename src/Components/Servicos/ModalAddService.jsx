@@ -20,9 +20,12 @@ const ModalAddService = () => {
       valuePayment: parseInt(valueService),
     };
 
-    setArrayAddedService([...arrayAddedService, service]);
-    alert("Serviço adicionado!")
-    setOpenModal(false)
+    const arrayAtt = [...arrayAddedService, service];
+
+    setArrayAddedService(arrayAtt);
+    localStorage.setItem("Servicos_adicionados", JSON.stringify(arrayAtt));
+    alert("Serviço adicionado!");
+    setOpenModal(false);
   };
 
   return (
