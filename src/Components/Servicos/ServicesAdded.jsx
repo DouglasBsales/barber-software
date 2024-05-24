@@ -11,6 +11,7 @@ const ServicesAdded = () => {
   const deleteService = (id) => {
     const newArray = arrayAddedService.filter((service) => service.id !== id);
     setArrayAddedService(newArray);
+    localStorage.setItem("Servicos_adicionados", JSON.stringify(newArray));
     alert("Serviço deletado com sucesso!")
   };
 
