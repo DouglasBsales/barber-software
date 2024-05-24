@@ -2,7 +2,14 @@ import { HomeContext } from "@/Context/HomeContext";
 import { useContext, useState, useEffect } from "react";
 
 const ButtonsDay = () => {
-  const { initialDay, setInitialDay, arrayRelatorioDia, setArrayRelatorioDia } = useContext(HomeContext);
+  const {
+    initialDay,
+    setInitialDay,
+    arrayRelatorioDia,
+    setArrayRelatorioDia,
+    arrayRelatorioCompleto,
+    setArrayRelatorioCompleto,
+  } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -28,12 +35,13 @@ const ButtonsDay = () => {
   const finishDay = () => {
     alert("Dia finalizado!");
     setInitialDay(true);
-    
+
     localStorage.setItem("initialDay", JSON.stringify(true));
+    setArrayRelatorioCompleto(arrayRelatorioDia);
 
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
-    console.log(arrayRelatorioDia)
+    console.log(arrayRelatorioDia);
   };
 
   if (!isClient) {
