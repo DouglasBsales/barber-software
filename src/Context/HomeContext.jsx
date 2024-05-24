@@ -26,7 +26,7 @@ export default function HomeContextProvider({ children }) {
   const [page, setPage] = useState("Home");
   const [modalService, setModalService] = useState(false);
 
-  const [arrayValueTotal, setArrayValueTotal] = useState([]);
+  const [arrayRelatorioCompleto, setArrayRelatorioCompleto] = useState([]);
 
 
   const relatorioDia = () => {
@@ -56,7 +56,8 @@ export default function HomeContextProvider({ children }) {
         setPage,
         modalService,
         setModalService,
-        arrayValueTotal,
+        arrayRelatorioCompleto,
+        setArrayRelatorioCompleto,
         arrayRelatorioDia,
         setArrayRelatorioDia
       }}
