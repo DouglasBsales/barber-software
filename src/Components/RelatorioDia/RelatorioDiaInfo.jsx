@@ -1,10 +1,22 @@
 import { HomeContext } from "@/Context/HomeContext";
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const RelatorioDiaInfo = () => {
-  const { arrayRelatorioDia } = useContext(HomeContext);
+  const { arrayRelatorioDia, setArrayRelatorioDia} = useContext(HomeContext);
+
+  useEffect(() => {
+    const storedData = localStorage.getItem("Servicos_dia");
+    if (storedData) {
+      setArrayRelatorioDia(JSON.parse(storedData));
+    }
+  }, [setArrayRelatorioDia]);
+
+  // Salvar o estado no localStorage sempre que arrayRelatorioDia mudar
+  useEffect(() => {
+    localStorage.setItem("Servicos_dia", JSON.stringify(arrayRelatorioDia));
+  }, [arrayRelatorioDia]);
 
   return (
     <div className="flex flex-col items-center pb-[100px]">
@@ -41,7 +53,9 @@ const RelatorioDiaInfo = () => {
                   <p className="text-blackPrimary">{service.service}</p>
                 </div>
                 <div className="flex gap-2">
-                  <p className="font-bold text-bluePrimary">Forma de Pagamento:</p>
+                  <p className="font-bold text-bluePrimary">
+                    Forma de Pagamento:
+                  </p>
                   <p className="text-blackPrimary">{service.typePayment}</p>
                 </div>
                 <div className="flex gap-2 pb-4">
