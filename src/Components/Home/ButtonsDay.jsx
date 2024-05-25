@@ -8,14 +8,12 @@ const ButtonsDay = () => {
     setInitialDay,
     arrayRelatorioDia,
     setArrayRelatorioDia,
-    arrayRelatorioCompleto,
     setArrayRelatorioCompleto,
   } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
   const [infoDate, setInfoDate] = useState({});
  
-
   useEffect(() => {
     // Marcar que estamos no cliente
     setIsClient(true);
@@ -51,6 +49,7 @@ const ButtonsDay = () => {
       {
         id: nanoid(),
         infoDate: infoDate,
+        finishedDayHour: new Date().toLocaleTimeString("pt-BR"),
         infos: [arrayRelatorioDia],
       },
     ];
