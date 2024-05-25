@@ -1,4 +1,5 @@
 import { HomeContext } from "@/Context/HomeContext";
+import { nanoid } from "nanoid";
 import { useContext, useState, useEffect } from "react";
 
 const ButtonsDay = () => {
@@ -12,6 +13,9 @@ const ButtonsDay = () => {
   } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
+  const [infoDate, setInfoDate] = useState({});
+ 
+
   useEffect(() => {
     // Marcar que estamos no cliente
     setIsClient(true);
@@ -23,13 +27,18 @@ const ButtonsDay = () => {
     }
   }, [setInitialDay]);
 
+
+
   const initDay = () => {
     const hour = new Date().toLocaleTimeString("pt-BR");
     const date = new Date().toLocaleDateString("pt-BR");
+    const weekday = new Date().toLocaleDateString('pt-BR', { weekday: 'long' });
+    setInfoDate({ hour, date, weekday });
     alert("Dia iniciado!");
     setInitialDay(false);
     localStorage.setItem("initialDay", JSON.stringify(false));
-    console.log(hour, date);
+
+    console.log(infoDate)
   };
 
   const finishDay = () => {
@@ -37,13 +46,24 @@ const ButtonsDay = () => {
     setInitialDay(true);
 
     localStorage.setItem("initialDay", JSON.stringify(true));
-    
-    setArrayRelatorioCompleto([arrayRelatorioDia]);
+
+    const arrayWithId = [
+      {
+        id: nanoid(),
+        infoDate: infoDate,
+        infos: [arrayRelatorioDia],
+      },
+    ];
+
+    setArrayRelatorioCompleto((prevArrayRelatorioCompleto) => [
+      ...prevArrayRelatorioCompleto,
+      ...arrayWithId,
+    ]);
 
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
-    console.log(arrayRelatorioDia);
   };
+
 
   if (!isClient) {
     return (
