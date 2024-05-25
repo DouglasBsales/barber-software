@@ -1,12 +1,22 @@
 import { HomeContext } from "@/Context/HomeContext";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useContext } from "react";
 
 const RelatorioInfo = () => {
-  const { arrayRelatorioCompleto } = useContext(HomeContext);
+  const { arrayRelatorioCompleto, arrayRelatorioData, setArrayRelatorioData } = useContext(HomeContext);
 
-  console.log(arrayRelatorioCompleto);
+  console.log(arrayRelatorioData)
+
+  const relatorioDataDay = (id) => {
+    const selected = arrayRelatorioCompleto.find(
+      (relatorio) => relatorio.id === id
+    );
+    setArrayRelatorioData([selected]);
+  };
+
+  console.log(arrayRelatorioData)
 
   return (
     <div className="flex flex-col items-center pb-[100px]">
@@ -35,9 +45,13 @@ const RelatorioInfo = () => {
                 </div>
               </div>
               <div className="pt-3">
-                <button className="bg-bluePrimary py-1 px-6 rounded-md">
+                <Link
+                  href="/RelatorioCompletoInfo"
+                  className="w-[160px] flex justify-center bg-bluePrimary rounded-md py-1 px-1"
+                  onClick={() => relatorioDataDay(relatorio.id)}
+                >
                   <p className="text-white font-bold">Ver detalhes</p>
-                </button>
+                </Link>
               </div>
             </div>
           </div>
