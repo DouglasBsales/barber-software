@@ -5,9 +5,8 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const RelatorioInfo = () => {
-  const { arrayRelatorioCompleto, arrayRelatorioData, setArrayRelatorioData } = useContext(HomeContext);
+  const { arrayRelatorioCompleto, setArrayRelatorioData } = useContext(HomeContext);
 
-  console.log(arrayRelatorioData)
 
   const relatorioDataDay = (id) => {
     const selected = arrayRelatorioCompleto.find(
@@ -16,12 +15,11 @@ const RelatorioInfo = () => {
     setArrayRelatorioData([selected]);
   };
 
-  console.log(arrayRelatorioData)
 
   return (
     <div className="flex flex-col items-center pb-[100px]">
       <p className="text-blackOpacity font-bold text-2xl">
-        Serviços realizados
+        Relatórios completos
       </p>
       <div className="mt-10">
         {arrayRelatorioCompleto.map((relatorio) => (
