@@ -1,6 +1,7 @@
 import { HomeContext } from "@/Context/HomeContext";
 import { nanoid } from "nanoid";
 import { useContext, useState, useEffect } from "react";
+import ModalFinishDay from "./ModalFinishDay";
 
 const ButtonsDay = () => {
   const {
@@ -9,11 +10,13 @@ const ButtonsDay = () => {
     arrayRelatorioDia,
     setArrayRelatorioDia,
     setArrayRelatorioCompleto,
+    infoDate, 
+    setInfoDate,
+    openModalFinishDay,
+    setOpenModalFinishDay
   } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
-  const [infoDate, setInfoDate] = useState({});
- 
   useEffect(() => {
     // Marcar que estamos no cliente
     setIsClient(true);
@@ -25,22 +28,21 @@ const ButtonsDay = () => {
     }
   }, [setInitialDay]);
 
-
-
   const initDay = () => {
     const hour = new Date().toLocaleTimeString("pt-BR");
     const date = new Date().toLocaleDateString("pt-BR");
-    const weekday = new Date().toLocaleDateString('pt-BR', { weekday: 'long' });
+    const weekday = new Date().toLocaleDateString("pt-BR", { weekday: "long" });
+
     setInfoDate({ hour, date, weekday });
+    localStorage.setItem("infoDateInitDay",JSON.stringify({ hour, date, weekday }));
+
     alert("Dia iniciado!");
     setInitialDay(false);
     localStorage.setItem("initialDay", JSON.stringify(false));
-
-    console.log(infoDate)
   };
 
   const finishDay = () => {
-    alert("Dia finalizado!");
+    setOpenModalFinishDay(true)
     setInitialDay(true);
 
     localStorage.setItem("initialDay", JSON.stringify(true));
@@ -62,7 +64,6 @@ const ButtonsDay = () => {
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
   };
-
 
   if (!isClient) {
     return (
@@ -89,6 +90,7 @@ const ButtonsDay = () => {
           </button>
         )}
       </div>
+      { openModalFinishDay && <ModalFinishDay/>}
     </div>
   );
 };
