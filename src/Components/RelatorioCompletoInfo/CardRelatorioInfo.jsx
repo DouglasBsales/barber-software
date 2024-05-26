@@ -1,19 +1,44 @@
 import { HomeContext } from "@/Context/HomeContext";
+import { useContext, useState } from "react";
+
 import {
   faCaretDown,
   faCaretUp,
   faClock,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useState } from "react";
+
 import CardInfoPayment from "./CardInfoPayment";
+import ModalComissao from "./ModalComissao";
 
 const CardRelatorioInfo = () => {
   const { arrayRelatorioData } = useContext(HomeContext);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
+  const [openModalComissao, setOpenModalComissao] = useState(false);
+  const [valueTotal, setValueTotal] = useState({});
+
   const seeInfoPayment = (payment) => {
     setSelectedPayment(selectedPayment === payment ? null : payment);
+  };
+
+  const showComissao = () => {
+    const totalValue = arrayRelatorioData
+      .flatMap((relatorio) => {
+        const lastInfoArray = relatorio.infos[relatorio.infos.length - 1];
+        return lastInfoArray.map((info) => info.valuePayment);
+      })
+      .reduce((total, value) => total + value, 0);
+
+    const totalPor2 = totalValue / 2;
+
+    const valoresTotais = {
+      totalValue,
+      totalPor2,
+    };
+
+    setValueTotal(valoresTotais);
+    setOpenModalComissao(true);
   };
 
   return (
@@ -108,12 +133,21 @@ const CardRelatorioInfo = () => {
               ))}
             </div>
             <div className="flex justify-center pt-10">
-              <button className="bg-bluePrimary p-3 rounded-md">
+              <button
+                className="bg-bluePrimary p-3 rounded-md"
+                onClick={showComissao}
+              >
                 <p className="text-white font-bold">Realizar comissão</p>
               </button>
             </div>
           </div>
         ))}
+        {openModalComissao && (
+          <ModalComissao
+            valueTotal={valueTotal}
+            setOpenModalComissao={setOpenModalComissao}
+          />
+        )}
       </div>
     </div>
   );
