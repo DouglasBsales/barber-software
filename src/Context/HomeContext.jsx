@@ -27,6 +27,24 @@ export default function HomeContextProvider({ children }) {
   const [modalService, setModalService] = useState(false);
 
   const [arrayRelatorioCompleto, setArrayRelatorioCompleto] = useState([]);
+  const [arrayRelatorioData, setArrayRelatorioData] = useState([])
+
+
+  const infoDateDay = () => {
+
+    let infoDate = null
+
+    if(typeof window !== "undefined"){
+      infoDate = localStorage.getItem("infoDateInitDay");
+    }
+
+    if (infoDate) {
+      return JSON.parse(infoDate);
+    } else {
+      return [];
+    }
+  };
+  const [infoDate, setInfoDate] = useState(infoDateDay());
 
 
   const relatorioDia = () => {
@@ -44,6 +62,7 @@ export default function HomeContextProvider({ children }) {
     }
   };
   const [arrayRelatorioDia, setArrayRelatorioDia] = useState(relatorioDia())
+  const [openModalFinishDay, setOpenModalFinishDay] = useState(false)
 
   return (
     <HomeContext.Provider
@@ -59,7 +78,13 @@ export default function HomeContextProvider({ children }) {
         arrayRelatorioCompleto,
         setArrayRelatorioCompleto,
         arrayRelatorioDia,
-        setArrayRelatorioDia
+        setArrayRelatorioDia,
+        arrayRelatorioData,
+        setArrayRelatorioData,
+        infoDate, 
+        setInfoDate,
+        openModalFinishDay, 
+        setOpenModalFinishDay
       }}
     >
       {children}

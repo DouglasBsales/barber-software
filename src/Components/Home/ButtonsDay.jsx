@@ -1,5 +1,7 @@
 import { HomeContext } from "@/Context/HomeContext";
+import { nanoid } from "nanoid";
 import { useContext, useState, useEffect } from "react";
+import ModalFinishDay from "./ModalFinishDay";
 
 const ButtonsDay = () => {
   const {
@@ -7,8 +9,11 @@ const ButtonsDay = () => {
     setInitialDay,
     arrayRelatorioDia,
     setArrayRelatorioDia,
-    arrayRelatorioCompleto,
     setArrayRelatorioCompleto,
+    infoDate, 
+    setInfoDate,
+    openModalFinishDay,
+    setOpenModalFinishDay
   } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
@@ -26,22 +31,38 @@ const ButtonsDay = () => {
   const initDay = () => {
     const hour = new Date().toLocaleTimeString("pt-BR");
     const date = new Date().toLocaleDateString("pt-BR");
+    const weekday = new Date().toLocaleDateString("pt-BR", { weekday: "long" });
+
+    setInfoDate({ hour, date, weekday });
+    localStorage.setItem("infoDateInitDay",JSON.stringify({ hour, date, weekday }));
+
     alert("Dia iniciado!");
     setInitialDay(false);
     localStorage.setItem("initialDay", JSON.stringify(false));
-    console.log(hour, date);
   };
 
   const finishDay = () => {
-    alert("Dia finalizado!");
+    setOpenModalFinishDay(true)
     setInitialDay(true);
 
     localStorage.setItem("initialDay", JSON.stringify(true));
-    setArrayRelatorioCompleto(arrayRelatorioDia);
+
+    const arrayWithId = [
+      {
+        id: nanoid(),
+        infoDate: infoDate,
+        finishedDayHour: new Date().toLocaleTimeString("pt-BR"),
+        infos: [arrayRelatorioDia],
+      },
+    ];
+
+    setArrayRelatorioCompleto((prevArrayRelatorioCompleto) => [
+      ...prevArrayRelatorioCompleto,
+      ...arrayWithId,
+    ]);
 
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
-    console.log(arrayRelatorioDia);
   };
 
   if (!isClient) {
@@ -69,6 +90,7 @@ const ButtonsDay = () => {
           </button>
         )}
       </div>
+      { openModalFinishDay && <ModalFinishDay/>}
     </div>
   );
 };

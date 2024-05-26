@@ -5,8 +5,13 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const InfoValues = () => {
-  const { seeValue, setSeeValue, arrayRelatorioCompleto, arrayRelatorioDia, setPage } =
-    useContext(HomeContext);
+  const {
+    seeValue,
+    setSeeValue,
+    arrayRelatorioCompleto,
+    arrayRelatorioDia,
+    setPage,
+  } = useContext(HomeContext);
 
   return (
     <div className="w-[326px] bg-white rounded-lg mt-[40px] px-5 border">
@@ -40,7 +45,17 @@ const InfoValues = () => {
             <input
               type={`${seeValue ? "text" : "password"}`}
               value={`R$ ${arrayRelatorioCompleto
-                .reduce((total, service) => total + service.valuePayment, 0)
+                .reduce((total, item) => {
+                  const subTotal = item.infos.reduce((subTotal, subArray) => {
+                    const innerSubTotal = subArray.reduce(
+                      (innerTotal, service) =>
+                        innerTotal + service.valuePayment,
+                      0
+                    );
+                    return subTotal + innerSubTotal;
+                  }, 0);
+                  return total + subTotal;
+                }, 0)
                 .toFixed(2)
                 .replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
@@ -61,7 +76,11 @@ const InfoValues = () => {
           />
         </div>
         <div className="pt-3 pb-5">
-          <Link href="/RelatorioDia" className="flex justify-center bg-bluePrimary rounded-md" onClick={()=> setPage("RelatorioDia")}>
+          <Link
+            href="/RelatorioDia"
+            className="flex justify-center bg-bluePrimary rounded-md"
+            onClick={() => setPage("RelatorioDia")}
+          >
             <p className="text-white font-bold py-1">Ver detalhes</p>
           </Link>
         </div>
