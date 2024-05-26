@@ -85,12 +85,12 @@ const CardRelatorioInfo = () => {
                     </p>
                     <p>{count}</p>
                     {selectedPayment === paymentType ? (
+                      <FontAwesomeIcon icon={faCaretUp} />
+                    ) : (
                       <FontAwesomeIcon
                         icon={faCaretDown}
                         className="text-blackPrimary"
                       />
-                    ) : (
-                      <FontAwesomeIcon icon={faCaretUp} />
                     )}
                   </button>
                   {selectedPayment === paymentType && (
