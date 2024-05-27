@@ -53,12 +53,14 @@ const InfoValues = () => {
                       0
                     );
                     return subTotal + innerSubTotal;
-                  }, 0);
-                  return total + subTotal;
+                  }, 0); 
+                  const day = new Date().getDate()
+                  return day === 1 ? total : total + subTotal
                 }, 0)
                 .toFixed(2)
                 .replace(".", ",")}`}
               className="w-full text-[40px] text-bluePrimary font-bold text-center"
+              disabled
             />
           </div>
         </div>
@@ -73,6 +75,7 @@ const InfoValues = () => {
               .toFixed(2)
               .replace(".", ",")}`}
             className="font-bold text-bluePrimary"
+            disabled
           />
         </div>
         <div className="pt-3 pb-5">
