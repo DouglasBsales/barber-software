@@ -23,7 +23,7 @@ const RelatorioDiaInfo = () => {
       <p className="text-blackOpacity font-bold text-2xl">
         Serviços realizados
       </p>
-      <div className="w-[326px] bg-white rounded-md mt-10 px-[23px]">
+      <div className="w-[326px] bg-white rounded-md mt-10 px-[23px] pb-3">
         {arrayRelatorioDia.map((service) => (
           <div key={service.id}>
             <div>
