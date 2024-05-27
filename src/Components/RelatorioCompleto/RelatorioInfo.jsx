@@ -2,10 +2,22 @@ import { HomeContext } from "@/Context/HomeContext";
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 
 const RelatorioInfo = () => {
-  const { arrayRelatorioCompleto, setArrayRelatorioData } = useContext(HomeContext);
+  const { arrayRelatorioCompleto,setArrayRelatorioCompleto, setArrayRelatorioData } = useContext(HomeContext);
+
+  useEffect(()=> {
+   
+    const estorageItem = localStorage.getItem("Relatorio_Completo")
+    if(estorageItem){
+      setArrayRelatorioCompleto(JSON.parse(estorageItem))
+    }
+  }, [setArrayRelatorioCompleto])
+
+  useEffect(()=> {
+    localStorage.setItem("Relatorio_Completo", JSON.stringify(arrayRelatorioCompleto));
+  }, [arrayRelatorioCompleto])
 
 
   const relatorioDataDay = (id) => {
@@ -13,8 +25,8 @@ const RelatorioInfo = () => {
       (relatorio) => relatorio.id === id
     );
     setArrayRelatorioData([selected]);
+    localStorage.setItem("RelatorioDetalhado", JSON.stringify([selected]));
   };
-
 
   return (
     <div className="flex flex-col items-center pb-[100px]">

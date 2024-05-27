@@ -1,5 +1,5 @@
 import { HomeContext } from "@/Context/HomeContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import {
   faCaretDown,
@@ -12,7 +12,7 @@ import CardInfoPayment from "./CardInfoPayment";
 import ModalComissao from "./ModalComissao";
 
 const CardRelatorioInfo = () => {
-  const { arrayRelatorioData } = useContext(HomeContext);
+  const { arrayRelatorioData, setArrayRelatorioData} = useContext(HomeContext);
   const [selectedPayment, setSelectedPayment] = useState(null);
 
   const [openModalComissao, setOpenModalComissao] = useState(false);
@@ -40,6 +40,14 @@ const CardRelatorioInfo = () => {
     setValueTotal(valoresTotais);
     setOpenModalComissao(true);
   };
+
+
+  useEffect(()=> {
+    const estorageItem = localStorage.getItem("RelatorioDetalhado")
+    if(estorageItem){
+      setArrayRelatorioData(JSON.parse(estorageItem))
+    }
+  }, [setArrayRelatorioData])
 
   return (
     <div className="max-w-6xl flex flex-col items-center px-8 pt-[40px] pb-[100px]">
