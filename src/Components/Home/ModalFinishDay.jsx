@@ -3,7 +3,12 @@ import Link from "next/link";
 import { useContext } from "react";
 
 const ModalFinishDay = () => {
-  const { setOpenModalFinishDay } = useContext(HomeContext);
+  const { setOpenModalFinishDay, setPage } = useContext(HomeContext);
+
+  const modalRelatorioOpen = ()=> {
+    setOpenModalFinishDay(false)
+    setPage("RelatorioCompleto")
+  }
 
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
@@ -17,7 +22,7 @@ const ModalFinishDay = () => {
               <Link
                 href="/RelatorioCompleto"
                 className="text-white font-semibold"
-                onClick={()=> setOpenModalFinishDay(false)}
+                onClick={modalRelatorioOpen}
               >
                 Veja seu relatório do dia
               </Link>
