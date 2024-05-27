@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const ModalComissao = ({ valueTotal, setOpenModalComissao }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-      <div className="w-[326px] bg-white rounded-md px-[25px]">
-        <div className="flex justify-end pt-2" onClick={()=> setOpenModalComissao(false)}>
-            <button >
+      <div className="w-[326px] bg-white rounded-md px-[25px] py-3 relative">
+        <div className="flex justify-end absolute right-2 top-1 ">
+            <button onClick={()=> setOpenModalComissao(false)}>
             <FontAwesomeIcon icon={faRectangleXmark} className="size-6 text-redPrimary"/>
             </button>
         </div>
-        <div className="flex flex-col justify-center items-center py-3">
+        <div className="flex flex-col justify-center items-center">
           <p className="text-blackOpacity font-semibold">Parabéns</p>
           <div className="flex items-center gap-2">
               <p className="text-blackPrimary font-semibold">O valor total foi de:</p>
