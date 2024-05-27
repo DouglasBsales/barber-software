@@ -1,11 +1,7 @@
 import { HomeContext } from "@/Context/HomeContext";
 import { useContext, useEffect, useState } from "react";
 
-import {
-  faCaretDown,
-  faCaretUp,
-  faClock,
-} from "@fortawesome/free-solid-svg-icons";
+import {faCaretDown,faCaretUp,faClock,} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import CardInfoPayment from "./CardInfoPayment";

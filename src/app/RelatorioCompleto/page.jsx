@@ -1,9 +1,10 @@
 "use client";
 
+import { useContext } from "react";
+import { HomeContext } from "@/Context/HomeContext";
+
 import RelatorioInfo from "@/Components/RelatorioCompleto/RelatorioInfo";
 import RelatorioVazio from "@/Components/RelatorioCompleto/RelatorioVazio";
-import { HomeContext } from "@/Context/HomeContext";
-import { useContext } from "react";
 
 export default function RelatorioCompleto() {
   const { arrayRelatorioCompleto } = useContext(HomeContext);

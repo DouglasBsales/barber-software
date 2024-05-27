@@ -1,7 +1,8 @@
+import { useContext, useEffect } from "react";
 import { HomeContext } from "@/Context/HomeContext";
+
 import { faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useContext, useEffect } from "react";
 
 const RelatorioDiaInfo = () => {
   const { arrayRelatorioDia, setArrayRelatorioDia} = useContext(HomeContext);

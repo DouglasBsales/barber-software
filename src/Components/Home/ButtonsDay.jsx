@@ -1,6 +1,7 @@
-import { HomeContext } from "@/Context/HomeContext";
-import { nanoid } from "nanoid";
 import { useContext, useState, useEffect } from "react";
+import { HomeContext } from "@/Context/HomeContext";
+
+import { nanoid } from "nanoid";
 import ModalFinishDay from "./ModalFinishDay";
 
 const ButtonsDay = () => {

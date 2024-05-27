@@ -1,5 +1,6 @@
-import { HomeContext } from "@/Context/HomeContext";
 import Link from "next/link";
+
+import { HomeContext } from "@/Context/HomeContext";
 import { useContext } from "react";
 
 const ModalFinishDay = () => {

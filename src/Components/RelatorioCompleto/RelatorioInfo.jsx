@@ -1,8 +1,10 @@
+import Link from "next/link";
+
 import { HomeContext } from "@/Context/HomeContext";
+import { useContext, useEffect } from "react";
+
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { useContext, useEffect } from "react";
 
 const RelatorioInfo = () => {
   const { arrayRelatorioCompleto,setArrayRelatorioCompleto, setArrayRelatorioData } = useContext(HomeContext);

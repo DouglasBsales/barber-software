@@ -1,9 +1,10 @@
 "use client";
 
+import { useContext, useEffect } from "react";
+import { ConfigContext } from "@/Context/ConfigContext";
+
 import Header from "@/Components/Servicos/Header";
 import ServiceItens from "@/Components/Servicos/ServiceItens";
-import { ConfigContext } from "@/Context/ConfigContext";
-import { useContext, useEffect } from "react";
 
 export default function Servicos() {
 

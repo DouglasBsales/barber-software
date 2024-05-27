@@ -5,13 +5,7 @@ import Link from "next/link";
 import { useContext } from "react";
 import { HomeContext } from "@/Context/HomeContext";
 
-import {
-  faClipboardList,
-  faGear,
-  faHouse,
-  faListCheck,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import {faClipboardList ,faGear ,faHouse ,faListCheck ,faPlus } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ModalService from "./Home/ModalService";

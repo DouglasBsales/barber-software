@@ -1,17 +1,13 @@
-import { HomeContext } from "@/Context/HomeContext";
-import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+
+import { HomeContext } from "@/Context/HomeContext";
 import { useContext } from "react";
 
+import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 const InfoValues = () => {
-  const {
-    seeValue,
-    setSeeValue,
-    arrayRelatorioCompleto,
-    arrayRelatorioDia,
-    setPage,
-  } = useContext(HomeContext);
+  const {seeValue,setSeeValue,arrayRelatorioCompleto,arrayRelatorioDia,setPage} = useContext(HomeContext);
 
   return (
     <div className="w-[326px] bg-white rounded-lg mt-[40px] px-5 border">

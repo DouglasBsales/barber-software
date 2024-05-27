@@ -1,12 +1,10 @@
 "use client";
 
-import {
-  faChevronRight,
-  faFileInvoiceDollar,
-  faShop,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+
+import {faChevronRight,faFileInvoiceDollar,faShop,} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 export default function Configuracoes() {
   return (
