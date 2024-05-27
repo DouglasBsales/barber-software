@@ -26,8 +26,38 @@ export default function HomeContextProvider({ children }) {
   const [page, setPage] = useState("Home");
   const [modalService, setModalService] = useState(false);
 
-  const [arrayRelatorioCompleto, setArrayRelatorioCompleto] = useState([]);
-  const [arrayRelatorioData, setArrayRelatorioData] = useState([])
+
+  const relatorioCompleto = () => {
+
+    let relatorioCompleto = null
+
+    if(typeof window !== "undefined"){
+      relatorioCompleto = localStorage.getItem("Relatorio_Completo");
+    }
+
+    if (relatorioCompleto) {
+      return JSON.parse(relatorioCompleto);
+    } else {
+      return [];
+    }
+  };
+  const [arrayRelatorioCompleto, setArrayRelatorioCompleto] = useState(relatorioCompleto());
+
+  const relatorioData = ()=> {
+    let relatorio = null
+
+    if(typeof window !== "undefined"){
+      relatorio = localStorage.getItem("RelatorioDetalhado");
+    } 
+
+    if(relatorio){
+      return JSON.parse(relatorio);
+    } else {
+      return [];
+    }
+  }
+
+  const [arrayRelatorioData, setArrayRelatorioData] = useState(relatorioData())
 
 
   const infoDateDay = () => {
