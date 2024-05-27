@@ -10,11 +10,12 @@ const ButtonsDay = () => {
     setInitialDay,
     arrayRelatorioDia,
     setArrayRelatorioDia,
+    arrayRelatorioCompleto,
     setArrayRelatorioCompleto,
-    infoDate, 
+    infoDate,
     setInfoDate,
     openModalFinishDay,
-    setOpenModalFinishDay
+    setOpenModalFinishDay,
   } = useContext(HomeContext);
   const [isClient, setIsClient] = useState(false);
 
@@ -35,7 +36,10 @@ const ButtonsDay = () => {
     const weekday = new Date().toLocaleDateString("pt-BR", { weekday: "long" });
 
     setInfoDate({ hour, date, weekday });
-    localStorage.setItem("infoDateInitDay",JSON.stringify({ hour, date, weekday }));
+    localStorage.setItem(
+      "infoDateInitDay",
+      JSON.stringify({ hour, date, weekday })
+    );
 
     alert("Dia iniciado!");
     setInitialDay(false);
@@ -43,7 +47,7 @@ const ButtonsDay = () => {
   };
 
   const finishDay = () => {
-    setOpenModalFinishDay(true)
+    setOpenModalFinishDay(true);
     setInitialDay(true);
 
     localStorage.setItem("initialDay", JSON.stringify(true));
@@ -57,14 +61,19 @@ const ButtonsDay = () => {
       },
     ];
 
-    setArrayRelatorioCompleto((prevArrayRelatorioCompleto) => [
-      ...prevArrayRelatorioCompleto,
-      ...arrayWithId,
-    ]);
+    const newArray = [ ...arrayRelatorioCompleto,
+      ...arrayWithId]
+
+    setArrayRelatorioCompleto(newArray);
 
     setArrayRelatorioDia([]);
     localStorage.setItem("Servicos_dia", JSON.stringify([]));
   };
+
+  useEffect(()=> {
+    localStorage.setItem("Relatorio_Completo", JSON.stringify(arrayRelatorioCompleto))
+  }, [arrayRelatorioCompleto])
+
 
   if (!isClient) {
     return (
@@ -91,7 +100,7 @@ const ButtonsDay = () => {
           </button>
         )}
       </div>
-      { openModalFinishDay && <ModalFinishDay/>}
+      {openModalFinishDay && <ModalFinishDay />}
     </div>
   );
 };
