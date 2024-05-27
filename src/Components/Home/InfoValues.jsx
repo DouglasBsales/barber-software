@@ -7,7 +7,7 @@ import { faEye, faEyeSlash, faWallet } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const InfoValues = () => {
-  const {seeValue,setSeeValue,arrayRelatorioCompleto,arrayRelatorioDia,setPage} = useContext(HomeContext);
+  const {seeValue,setSeeValue,arrayRelatorioCompleto,arrayRelatorioDia,setPage } = useContext(HomeContext);
 
   return (
     <div className="w-[326px] bg-white rounded-lg mt-[40px] px-5 border">
@@ -49,13 +49,13 @@ const InfoValues = () => {
                       0
                     );
                     return subTotal + innerSubTotal;
-                  }, 0); 
-                  const day = new Date().getDate()
-                  return day === 1 ? total : total + subTotal
+                  }, 0);
+                  const day = new Date().getDate();
+                  return day === 1 ? total : total + subTotal;
                 }, 0)
                 .toFixed(2)
                 .replace(".", ",")}`}
-              className="w-full text-[40px] text-bluePrimary font-bold text-center"
+              className="w-full text-[40px] text-bluePrimary font-bold text-center bg-transparent opacity-100 disabled:text-bluePrimary disabled:opacity-100"
               disabled
             />
           </div>
@@ -70,7 +70,7 @@ const InfoValues = () => {
               .reduce((total, service) => total + service.valuePayment, 0)
               .toFixed(2)
               .replace(".", ",")}`}
-            className="font-bold text-bluePrimary"
+            className="font-bold text-bluePrimary bg-transparent opacity-100 disabled:text-bluePrimary disabled:opacity-100"
             disabled
           />
         </div>
